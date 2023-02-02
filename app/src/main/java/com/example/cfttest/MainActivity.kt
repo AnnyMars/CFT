@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun getInfo(numbers:String){
         val interceptor = HttpLoggingInterceptor()
-        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BODY }
+        interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BASIC }
         val client: OkHttpClient = OkHttpClient.Builder()
             .addInterceptor(interceptor).build()
         val api = Retrofit.Builder()
