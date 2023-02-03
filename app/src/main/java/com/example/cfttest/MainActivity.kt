@@ -2,6 +2,9 @@ package com.example.cfttest
 
 
 import android.os.Bundle
+import android.view.Gravity
+import android.widget.Toast
+import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.cfttest.data.api.ApiService
@@ -59,8 +62,24 @@ class MainActivity : AppCompatActivity() {
                 val data = response.body()!!
                 withContext(Dispatchers.Main){
                     scheme_value.text = data.scheme
+                    if(data.prepaid == true){
+                        prepaid_value.text = "True"
+                    }
+                    else {
+                        prepaid_value.text = "False"
+                    }
+                    type_value.text = data.type
+                    brand_value.text = data.brand
+                    number_value_1.text = data.number?.length.toString()
+                    number_value_2.text = data.number?.luhn.toString()
+
+
 
                 }
+            }
+            else{
+               Toast.makeText(applicationContext, "qwdqwfdqwfqw", Toast.LENGTH_SHORT).show()
+
             }
         }
     }
