@@ -2,9 +2,7 @@ package com.example.cfttest
 
 
 import android.os.Bundle
-import android.view.Gravity
 import android.widget.Toast
-import androidx.annotation.MainThread
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.cfttest.data.api.ApiService
@@ -70,40 +68,22 @@ class MainActivity : AppCompatActivity() {
                     }
                     type_value.text = data.type
                     brand_value.text = data.brand
-                    number_value_1.text = data.number?.length.toString()
-                    number_value_2.text = data.number?.luhn.toString()
-
-
+                    number_value_1.text = "Length: " + data.number?.length.toString()
+                    number_value_2.text = "Luhn: " + data.number?.luhn.toString()
+                    bank_value_1.text = "Name: " + data.bank.name.toString()
+                    bank_value_2.text = "URL: " + data.bank.url.toString()
+                    bank_value_3.text = "City: " + data.bank.city.toString()
+                    country_value_1.text = "Emoji: " + data.country?.emoji.toString()
+                    country_value_2.text = "Latitude: " + data.country?.latitude.toString()
+                    country_value_3.text = "Longitude: " + data.country?.longitude.toString()
+                    country_value_4.text = "Name: " + data.country?.name.toString()
 
                 }
             }
             else{
-               Toast.makeText(applicationContext, "qwdqwfdqwfqw", Toast.LENGTH_SHORT).show()
+               Toast.makeText(applicationContext, "REQUEST ERROR", Toast.LENGTH_SHORT).show()
 
             }
         }
     }
-
-//    fun parseJson(numb:String) {
-//        val url = "https://lookup.binlist.net/$numb"
-//        val request = Request.Builder()
-//            .url(url)
-//            .build()
-//        val client = OkHttpClient()
-//        client.newCall(request).enqueue(object: Callback{
-//            override fun onResponse(call: Call, response: Response) {
-//                val body = response.body?.string()
-//                println(body)
-//
-//                val gson = GsonBuilder().create()
-//
-//                val cardInfo = gson.fromJson(body, CardInfo::class.java)
-//            }
-//            override fun onFailure(call: Call, e: IOException) {
-//                println("Error")
-//            }
-//        })
-//    }
-
-
 }
