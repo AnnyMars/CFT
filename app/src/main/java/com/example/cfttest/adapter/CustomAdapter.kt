@@ -1,15 +1,15 @@
 package com.example.cfttest.adapter
 
-import android.content.SharedPreferences
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.cfttest.R
-import com.example.cfttest.model.AdapterModel
+import com.example.cfttest.model.Model
 import kotlinx.android.synthetic.main.item_lauout.view.*
 
-class CustomAdapter(private val items: MutableList<AdapterModel> ):RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
+class CustomAdapter(val listModel: List<Model>):RecyclerView.Adapter<CustomAdapter.MyViewHolder>() {
+
 
     class MyViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)
 
@@ -19,10 +19,10 @@ class CustomAdapter(private val items: MutableList<AdapterModel> ):RecyclerView.
         return MyViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int = items.size
+    override fun getItemCount(): Int = listModel.size
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val item = items[position]
+        val item = listModel[position]
         holder.itemView.rec_text.text = item.number
     }
 }

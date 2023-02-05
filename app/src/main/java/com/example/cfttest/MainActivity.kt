@@ -1,18 +1,16 @@
 package com.example.cfttest
 
 
-import android.content.Context
-import android.content.SharedPreferences
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.example.cfttest.adapter.CustomAdapter
 import com.example.cfttest.data.api.ApiService
-import com.example.cfttest.model.AdapterModel
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
+import com.example.cfttest.db.NDataBase
+import com.example.cfttest.model.Model
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,34 +19,47 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.reflect.Type
-
 
 const val BASE_URL = "https://lookup.binlist.net"
 
-class MainActivity : AppCompatActivity() {
-
+class MainActivity() : AppCompatActivity() {
+    lateinit var adapter: CustomAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
 
-        val numberList = ArrayList<AdapterModel>()
-        val recView: RecyclerView = rec_view
-        recView.adapter = CustomAdapter(numberList)
+
+        val db = Room.databaseBuilder(applicationContext,
+            NDataBase::class.java,
+            "table")
+            .allowMainThreadQueries()
+            .fallbackToDestructiveMigration()
+            .build()
+
+        db.getDataBaseDao()
+//
+//        val list = ArrayList<Model>()
+        val models: MutableList<Model>  = db.getDataBaseDao().getAll() as MutableList<Model>
+        adapter = CustomAdapter(models as List<Model>)
+        rec_view.adapter = adapter
+
+
 
         enter_btn.setOnClickListener {
             val numb = edit_text.text.toString()
             getInfo(numb)
         }
         save_btn.setOnClickListener {
-            val numbers = edit_text.text.toString()
-            val recItem = AdapterModel(numbers)
-            numberList.add(recItem)
+            val title = edit_text.text.toString()
+            val newItem = Model(title)
+            db.getDataBaseDao().insert(newItem)
+            db.getDataBaseDao().getAll()
+            models.add(newItem)
         }
-
-
     }
+
+    @SuppressLint("SetTextI18n")
     private fun getInfo(numbers: String) {
             val interceptor = HttpLoggingInterceptor()
             interceptor.apply { interceptor.level = HttpLoggingInterceptor.Level.BASIC }
@@ -92,23 +103,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-//    private fun saveData(){
-//        val pref: SharedPreferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
-//        val editor = pref.edit()
-//        val gson = Gson()
-//        val json = gson.toJson(numberList)
-//        editor.putString("numberList", json)
-//        editor.apply()
-//    }
-//    private fun loadData(){
-//        val pref: SharedPreferences = getSharedPreferences("sharedPref", Context.MODE_PRIVATE)
-//        val gson = Gson()
-//        val json = pref.getString("numberList", "")
-//        val type = object : TypeToken<ArrayList<AdapterModel?>?>() {}.type
-//        numberList = gson.fromJson(json, type)
-//        if (numberList == null) {
-//            numberList = ArrayList()
-//        }
-//    }
 }
 
