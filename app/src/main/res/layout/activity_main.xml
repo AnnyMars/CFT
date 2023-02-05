@@ -17,13 +17,24 @@
         tools:ignore="HardcodedText" />
 
 
+    <Button
+        android:id="@+id/save_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintEnd_toStartOf="@+id/enter_btn"
+        app:layout_constraintStart_toEndOf="@+id/edit_text"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <EditText
         android:id="@+id/edit_text"
-        android:layout_width="300dp"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:inputType="text"
         android:hint="Enter card number"
+        android:inputType="numberDecimal"
+        android:layout_marginEnd="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="HardcodedText,TextFields" />
@@ -125,7 +136,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.362"
         app:layout_constraintStart_toEndOf="@+id/brand"
-        app:layout_constraintTop_toBottomOf="@+id/type_value" />
+        app:layout_constraintTop_toBottomOf="@+id/type_value"
+        tools:ignore="HardcodedText" />
 
     <View
         android:layout_width="wrap_content"
@@ -146,7 +158,8 @@
         android:layout_marginTop="20dp"
         android:text="Prepaid:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/brand" />
+        app:layout_constraintTop_toBottomOf="@+id/brand"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/prepaid_value"
@@ -159,7 +172,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.346"
         app:layout_constraintStart_toEndOf="@+id/prepaid"
-        app:layout_constraintTop_toBottomOf="@+id/brand_value" />
+        app:layout_constraintTop_toBottomOf="@+id/brand_value"
+        tools:ignore="HardcodedText" />
 
     <View
         android:layout_width="wrap_content"
@@ -180,7 +194,8 @@
         android:layout_marginTop="20dp"
         android:text="Card Number:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/prepaid" />
+        app:layout_constraintTop_toBottomOf="@+id/prepaid"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/number_value_1"
@@ -194,7 +209,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toEndOf="@+id/number"
-        app:layout_constraintTop_toBottomOf="@+id/prepaid_value" />
+        app:layout_constraintTop_toBottomOf="@+id/prepaid_value"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/number_value_2"
@@ -207,7 +223,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.389"
         app:layout_constraintStart_toEndOf="@+id/number_value_1"
-        app:layout_constraintTop_toBottomOf="@+id/prepaid_value" />
+        app:layout_constraintTop_toBottomOf="@+id/prepaid_value"
+        tools:ignore="HardcodedText" />
 
     <View
         android:layout_width="wrap_content"
@@ -229,7 +246,8 @@
         android:text="Bank:"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/number" />
+        app:layout_constraintTop_toBottomOf="@+id/number"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/bank_value_1"
@@ -242,7 +260,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.081"
         app:layout_constraintStart_toEndOf="@+id/bank"
-        app:layout_constraintTop_toBottomOf="@+id/number_value_1" />
+        app:layout_constraintTop_toBottomOf="@+id/number_value_1"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/bank_value_2"
@@ -254,7 +273,8 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/bank_value_1"
-        app:layout_constraintTop_toBottomOf="@+id/bank_value_1" />
+        app:layout_constraintTop_toBottomOf="@+id/bank_value_1"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/bank_value_3"
@@ -265,7 +285,22 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toStartOf="@+id/bank_value_2"
-        app:layout_constraintTop_toBottomOf="@+id/bank_value_2" />
+        app:layout_constraintTop_toBottomOf="@+id/bank_value_2"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/bank_value_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="4dp"
+        android:text="value4"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:autoLink="phone"
+        app:layout_constraintBottom_toTopOf="@id/view"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="HardcodedText" />
 
     <View
         android:id="@+id/view"
@@ -287,7 +322,8 @@
         android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bank" />
+        app:layout_constraintTop_toBottomOf="@+id/bank"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/country_value_1"
@@ -299,46 +335,65 @@
         android:textColor="@color/black"
         android:textSize="15sp"
         app:layout_constraintStart_toEndOf="@+id/country"
-        app:layout_constraintTop_toBottomOf="@+id/view" />
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/country_value_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+
+        android:layout_marginTop="4dp"
         android:text="value2"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="@+id/country_value_1"
-        app:layout_constraintTop_toBottomOf="@+id/country_value_1" />
+        app:layout_constraintEnd_toStartOf="@+id/country_value_3"
+        app:layout_constraintStart_toEndOf="@+id/country_value_1"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/country_value_3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="5dp"
         android:text="value3"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/country_value_2"
-        app:layout_constraintTop_toBottomOf="@id/country_value_2" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/view"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/country_value_4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="value4"
         android:textColor="@color/black"
         android:textSize="15sp"
-        app:layout_constraintStart_toStartOf="@+id/country_value_3"
-        app:layout_constraintTop_toBottomOf="@id/country_value_3" />
+        app:layout_constraintStart_toStartOf="@+id/country_value_1"
+        app:layout_constraintTop_toBottomOf="@+id/country_value_1"
+        tools:ignore="HardcodedText" />
 
     <View
+        android:id="@+id/last_line"
         android:layout_width="wrap_content"
         android:layout_height="3dp"
         android:background="@drawable/line"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/country_value_4" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rec_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/last_line"
+        tools:listitem="@layout/rec_view" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
