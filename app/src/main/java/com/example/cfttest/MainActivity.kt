@@ -87,7 +87,7 @@ class MainActivity() : AppCompatActivity() {
                         brand_value.text = data.brand
                         number_value_1.text = "Length: " + data.number?.length.toString()
                         number_value_2.text = "Luhn: " + data.number?.luhn.toString()
-                        bank_value_1.text = "Name: " + data.bank.name.toString()
+                        bank_value_1.text = "Name: " + data.bank.name
                         bank_value_2.text = "URL: " + data.bank.url.toString()
                         bank_value_3.text = "City: " + data.bank.city.toString()
                         bank_value_4.text = "Phone: " + data.bank.phone.toString()

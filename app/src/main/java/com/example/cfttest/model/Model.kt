@@ -11,6 +11,4 @@ data class Model(
 
     @PrimaryKey(autoGenerate = true)
     var uid: Int = 0
-    ){
-
-}
+    )
