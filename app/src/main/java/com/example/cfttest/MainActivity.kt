@@ -38,8 +38,7 @@ class MainActivity() : AppCompatActivity() {
             .build()
 
         db.getDataBaseDao()
-//
-//        val list = ArrayList<Model>()
+
         val models: MutableList<Model>  = db.getDataBaseDao().getAll() as MutableList<Model>
         adapter = CustomAdapter(models as List<Model>)
         rec_view.adapter = adapter
